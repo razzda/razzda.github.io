@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kompas</title>
+<!--
+  The landing page of a Kompas staff link (messages between staff, D84). On a phone with the staff or test app,
+  Android opens the app straight away (Android App Links: /.well-known/assetlinks.json on this host), so this
+  page is only seen in a browser: on a computer, on a phone without the app, or where the link was not verified.
+  It holds no data. The place is in the part after # and is never sent to this server; the page only hands it
+  to the app. Written by tools/build_linkpage.py into the owner's GitHub Pages repository (see its README).
+-->
+<style>
+:root { --bg: #eef2f7; --surface: #fff; --ink: #0f1d2e; --ink-2: #47576b; --line: #e1e7ef; --accent: #0b63ce; --accent-ink: #fff; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #080e1a; --surface: #101827; --ink: #e9eff8; --ink-2: #a9b6c9; --line: #222e45; --accent: #5aa2ff; --accent-ink: #06101f; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink); font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: grid; place-items: center; padding: 24px 16px; }
+main { width: 100%; max-width: 420px; background: var(--surface); border-radius: 20px; padding: 26px 22px; box-shadow: 0 0 0 1px var(--line) inset; }
+h1 { margin: 0 0 6px; font-size: 24px; }
+p { margin: 0 0 14px; color: var(--ink-2); }
+.btn { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin-top: 10px; border-radius: 14px;
+  background: var(--accent); color: var(--accent-ink); font-weight: 700; text-decoration: none; }
+.btn.alt { background: transparent; color: var(--accent); box-shadow: 0 0 0 1.5px var(--accent) inset; }
+small { display: block; margin-top: 18px; color: var(--ink-2); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Kompas</h1>
+  <p>En kollega har sendt dig et link til Kompas. Det åbnes i Kompas-appen for personale.</p>
+  <a class="btn" id="staff" href="#">Åbn i Kompas</a>
+  <a class="btn alt" id="test" href="#">Åbn i Kompas TEST</a>
+  <small>Har du ikke appen, så spørg den kollega, der sendte linket. Siden gemmer ingenting, og stedet sendes ikke til nogen server.</small>
+</main>
+<script>
+// intent:// opens the named app in Chrome on Android; the place travels as an extra, not in the address
+(function () {
+  var hash = location.hash.replace(/^#/, '');
+  var link = function (pkg) {
+    return 'intent://' + location.host + location.pathname + '#Intent;scheme=https;package=' + pkg +
+      ';S.kompas=' + encodeURIComponent(hash) + ';end';
+  };
+  document.getElementById('staff').href = link('dk.regionoest.kompas.personale');
+  document.getElementById('test').href = link('dk.regionoest.kompas.test');
+})();
+</script>
+</body>
+</html>
