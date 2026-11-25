@@ -1,0 +1,18 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dk.regionoest.kompas.personale",
+      "sha256_cert_fingerprints": ["20:E8:D5:76:D8:D6:90:8E:CB:B9:8E:CD:62:7A:7F:31:B5:37:90:BC:53:B1:3A:1C:74:E6:2C:E0:F9:03:3D:00"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dk.regionoest.kompas.test",
+      "sha256_cert_fingerprints": ["20:E8:D5:76:D8:D6:90:8E:CB:B9:8E:CD:62:7A:7F:31:B5:37:90:BC:53:B1:3A:1C:74:E6:2C:E0:F9:03:3D:00"]
+    }
+  }
+]
